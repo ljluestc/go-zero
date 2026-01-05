@@ -130,7 +130,7 @@ func TestParser_Parse_infoStmt(t *testing.T) {
 			"author":  `"type author here"`,
 			"email":   `"type email here"`,
 			"version": `"type version here"`,
-			"enable": `true`,
+			"enable":  `true`,
 			"disable": `false`,
 		}
 		p := New("foo.api", infoTestAPI)
@@ -761,7 +761,8 @@ func TestParser_Parse_service(t *testing.T) {
 									Text: "/foo/:bar",
 								}),
 							},
-							Request: &ast.BodyStmt{
+							Returns: ast.NewTokenNode(token.Token{Type: token.IDENT, Text: "returns"}),
+							Response: &ast.BodyStmt{
 								LParen: ast.NewTokenNode(token.Token{Type: token.LPAREN, Text: "("}),
 								Body: &ast.BodyExpr{
 									Value: ast.NewTokenNode(token.Token{Type: token.IDENT, Text: "Foo"}),
